@@ -13,6 +13,6 @@ router.get('/list', [authenticate], postController.getPosts);
 
 router.post('/edit/:id', [authenticate, checkOwner], postController.editPost);
 
-router.post('/delete/:id', [authenticate, checkOwner], postController.deletePost);
+router.get('/delete/:id', [authenticate, checkOwner], postController.deletePost);
 
 module.exports = router;
