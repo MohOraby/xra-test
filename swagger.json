@@ -1,0 +1,288 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "xramile Test",
+    "description": "API documentation for xramile test",
+    "license": {
+      "name": "test"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "User",
+      "description": "API calls to signup and login"
+    },
+    {
+      "name": "Posts",
+      "description": "API calls to posts Crud"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/user/signup": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Create User",
+        "parameters": [
+          {
+            "name": "User",
+            "in": "body",
+            "description": "Create User",
+            "schema": {
+              "type": "object",
+              "example": {
+                "firstName": "string",
+                "lastName": "string",
+                "email": "string",
+                "password": "string"
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "type": "application/json",
+            "schema": {
+              "example": {
+                "user": {
+                  "_id": "ObjectId",
+                  "firstName": "string",
+                  "lastName": "string",
+                  "email": "string",
+                  "password": "string"
+                },
+                "token": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Authenticate User",
+        "parameters": [
+          {
+            "name": "User",
+            "in": "body",
+            "description": "Create User",
+            "schema": {
+              "type": "object",
+              "example": {
+                "email": "string",
+                "password": "string"
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "type": "application/json",
+            "schema": {
+              "example": {
+                "user": {
+                  "_id": "ObjectId",
+                  "firstName": "string",
+                  "lastName": "string",
+                  "email": "string",
+                  "password": "string"
+                },
+                "token": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/post/list": {
+      "get": {
+        "tags": [
+          "Post"
+        ],
+        "description": "Get all posts",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "List posts",
+            "schema": {
+              "type": "array",
+              "example": [
+                {
+                  "_id": "ObjectId",
+                  "title": "string",
+                  "content": "string",
+                  "user": "ObjectId"
+                },
+                {
+                  "_id": "ObjectId",
+                  "title": "string",
+                  "content": "string",
+                  "user": "ObjectId"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/post/create": {
+      "post": {
+        "tags": [
+          "Post"
+        ],
+        "description": "Create Post",
+        "parameters": [
+          {
+            "name": "Post",
+            "in": "body",
+            "description": "Create Post",
+            "schema": {
+              "type": "object",
+              "example": {
+                "title": "string",
+                "content": "string"
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "type": "application/json",
+            "schema": {
+              "example": {
+                "_id": "ObjectId",
+                "title": "string",
+                "content": "string",
+                "user": "ObjectId"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/post/edit/:id": {
+      "post": {
+        "tags": [
+          "Post"
+        ],
+        "description": "Edit Post",
+        "parameters": [
+          {
+            "name": "Post",
+            "in": "body",
+            "description": "Edit Post",
+            "schema": {
+              "type": "object",
+              "example": {
+                "title": "string",
+                "content": "string"
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "type": "application/json",
+            "schema": {
+              "example": {
+                "_id": "ObjectId",
+                "title": "string",
+                "content": "string",
+                "user": "ObjectId"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/post/delete/:id": {
+      "get": {
+        "tags": [
+          "Post"
+        ],
+        "description": "Get all posts",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "List posts",
+            "schema": {
+              "type": "array",
+              "example": {
+                "_id": "ObjectId",
+                "title": "string",
+                "content": "string",
+                "user": "ObjectId"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "required": [
+        "id",
+        "firstName",
+        "lastName",
+        "email",
+        "password"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
