@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "xramile Test",
-    "description": "API documentation for xramile test",
+    "title": "xra Test",
+    "description": "API documentation for xra test",
     "license": {
       "name": "test"
     }
